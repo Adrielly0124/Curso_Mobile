@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget { //classe inicial
   @override
   Widget build(BuildContext context) {
     return MaterialApp( //material app - material base de desenvolvimento
-      home: Scaffold(  //página inicial usando uma tela padrão
+      home: Scaffold(  //página inicial usando uma tela padrão // é um Widget
         appBar: AppBar(
           title: Text("Olá Mundo")
           ),
