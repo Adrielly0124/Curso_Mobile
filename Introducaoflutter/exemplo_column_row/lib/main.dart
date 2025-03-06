@@ -12,21 +12,37 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text("Exemplos Colunas(Column) e Linhas(Row)")),
-        body: Column(
-          mainAxisAlignment:
-              MainAxisAlignment.spaceAround, //alinhamento dos elementos na vertical
-          crossAxisAlignment:
-              CrossAxisAlignment
-                  .center, //alinhamento dos elementos na horizontal
-          children: [
-            Text("Linha 1"),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [Text("Coluna1"), Text("Coluna 2")],
-            ),
-            Text("Linha3"),
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment:
+                MainAxisAlignment.spaceAround, //alinhamento dos elementos do eixo principal - no caso da coluna, na vertical 
+            crossAxisAlignment:
+                CrossAxisAlignment
+                    .center, //alinhamento dos elementos do eixo secundário - no caso da coluna, na horizontal
+            children: [
+              Text("Linha 1"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround, //alinhamento dos elementos do eixo principal - no caso da linha, na horizontal
+                crossAxisAlignment: CrossAxisAlignment.center, //alinhamento dos elementos do eixo secundário - no caso da linha, na vertical
+                children: [Text("Coluna1"), Text("Coluna 2")],
+              ),
+              Text("Linha3"),
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 200,
+                    height: 200,
+                    color:Colors.pink,
+                  ),
+                  Positioned(
+                    top: 20,
+                    right: 20,
+                    child: Icon(Icons.person)),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

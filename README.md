@@ -44,3 +44,6 @@
                    *O comando deve ser executado na pasta raiz do aplicativo
                         -Uso do  --platforms sguido do nome da plataforma 
                         EX: flutter create -- platafomrs=android nome_do_app
+                    
+        - Árvore de Widgets (Scaffold)
+            - Material App ()
