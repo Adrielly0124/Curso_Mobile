@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()));
+class TelaCadastro extends StatefulWidget{
+  _TelaCadastroState createState() => _TelaCadastroState();
 }
 
-class MyApp extends StatefulWidget {
-  // chama as modificação de contrução
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class _TelaCadastroState extends State<TelaCadastro> {
   //construção do widget
   //estudo de widgets de interação (Input de Texto, checkbox, ) -> formulário
   //atributos
@@ -24,11 +19,9 @@ class _MyAppState extends State<MyApp> {
   double _experiencia = 0;
   bool _aceite = false;
 
-  //métodos
-  Widget build(BuildContext context) {
-    //construtor de Widgets
+  Widget build(BuildContext contet) {
     return Scaffold(
-      appBar: AppBar(title: Text("Cadastro de Usuário"), centerTitle: true),
+      appBar: AppBar(title: Text("Tela de Cadastro"), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Form(
@@ -99,8 +92,7 @@ class _MyAppState extends State<MyApp> {
                 onChanged: (value) {
                   setState(() {
                     _experiencia = value;
-                    }
-                  );
+                  });
                 },
               ),
               //Aceite dos Termos de Uso
@@ -110,34 +102,20 @@ class _MyAppState extends State<MyApp> {
                 onChanged: (value) {
                   setState(() {
                     _aceite = value!;
-                    }
-                  );
+                  });
                 },
               ),
               ElevatedButton(
-                onPressed: _enviarFormulario,
-                child: Text("Enviar"),
-              ),
+              onPressed: ()=> Navigator.pushNamed(context, "/"), 
+              child: Text("Voltar")),
+            //Criar a Validação dos Dados do formulários para mudar de tela
+            ElevatedButton(
+              onPressed: ()=> Navigator.pushNamed(context, "/confirmacao"), 
+              child: Text("Enviar"))
             ],
           ),
         ),
       ),
     );
-  }
-
-  void _enviarFormulario() {
-    if (_formKey.currentState!.validate() && _aceite) {
-      _formKey.currentState!.save();
-      showDialog(
-        context: context,
-        builder:
-            (context) => AlertDialog(
-              title: Text("Dados do Formulário"),
-              content: Column(
-                children: [Text("Nome: $_nome"), Text("Email: $_email")],
-          ),
-        ),
-      );
-    }
   }
 }
