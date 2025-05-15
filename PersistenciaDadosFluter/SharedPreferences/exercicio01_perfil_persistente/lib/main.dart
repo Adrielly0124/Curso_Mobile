@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pagina_perfil.dart';
 
-void main() {
-  runApp(AppMeuPerfil());
+void main() { //função principal, que vai fazer rodar a tela inicial 
+  runApp(AppMeuPerfil());//widget principal do app - raiz (principal - elementos visuais)
+  // O AppMeuPerfil é um widget que representa o aplicativo
 }
 
 // App principal com rotas
