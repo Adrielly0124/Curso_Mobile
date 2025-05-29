@@ -2,7 +2,7 @@
 
 class Pet{
   //atributos
-  final int? id; //permite ser nulo
+  final int? id; //permite ser nulo //final - só pode ter seu valor alterado uma vez
   final String nome;
   final String raca;
   final String nomeDono;
