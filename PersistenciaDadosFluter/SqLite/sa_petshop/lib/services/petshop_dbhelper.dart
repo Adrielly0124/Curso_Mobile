@@ -7,7 +7,7 @@ import 'package:path/path.dart';
 import '../models/pet_model.dart';
 
 class PetShopDBHelper {
-  // fazer conexão singleton
+  // fazer conexão singleton - um objeto por vez 
   static Database? _database; // obj SQlite conexão com BD
 
   //classe do tipo Singleton
@@ -34,8 +34,9 @@ class PetShopDBHelper {
       nome TEXT NOT NULL,
       raca TEXT NOT NULL,
       nome_dono TEXT NOT NULL,
-      telefone_dono TEXT NOT NULL);""");
+      telefone_dono TEXT NOT NULL)""");
     print("tabela pets Criada");
+
     await db.execute("""CREATE TABLE IF NOT EXISTS consultas(
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       pet_id INTEGER NOT NULL,
@@ -80,9 +81,9 @@ class PetShopDBHelper {
     if (maps.isEmpty) {
       return null;
     } else {
-      Pet.fromMap(maps.first);
+      return Pet.fromMap(maps.first);
     }
-    return null;
+    
   }
 
   Future<int> deletePet(int id) async {
