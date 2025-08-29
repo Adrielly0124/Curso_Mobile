@@ -1,11 +1,11 @@
-class Usuario {
+class Livro {
   //atributos
   final String? id;//pode ser nulo inicialmente
   final String titulo;
   final String autor;
   final bool disponivel;
 
-  Usuario({this.id, required this.titulo , required this.autor, required this.disponivel});
+  Livro({this.id, required this.titulo , required this.autor, required this.disponivel});
 
   //metodos
   //toJson
@@ -17,11 +17,13 @@ class Usuario {
   };
 
   //fromMap
-  factory Usuario.fromJson(Map<String,dynamic> Json) =>
-  Usuario(
+  factory Livro.fromJson(Map<String,dynamic> Json) =>
+  Livro(
     id: Json["id"].tostring(),
     titulo: Json["nome"].tostring(),
     autor: Json["email"].tostring(),
-    disponivel: Json["disponivel"] == true ? true : false,
+    disponivel: Json["disponivel"] == 1 ? true : false,
   );
+
+  static fromMap(item) {}
 }

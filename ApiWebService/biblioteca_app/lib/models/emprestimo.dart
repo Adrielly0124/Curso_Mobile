@@ -1,4 +1,4 @@
-class Usuario {
+class Emprestimo {
   //atributos
   final String? usuario_id;//pode ser nulo inicialmente
   final String livro;
@@ -6,7 +6,7 @@ class Usuario {
   final DateTime data_devolucao;
   final bool devolvido;
 
-  Usuario({this.usuario_id, required this.livro , required this.data_emprestimo, required this.data_devolucao, required this.devolvido});
+  Emprestimo({this.usuario_id, required this.livro , required this.data_emprestimo, required this.data_devolucao, required this.devolvido});
 
   //metodos
   //toJson
@@ -18,12 +18,14 @@ class Usuario {
   };
 
   //fromMap
-  factory Usuario.fromJson(Map<String,dynamic> Json) =>
-  Usuario(
+  factory Emprestimo.fromJson(Map<String,dynamic> Json) =>
+  Emprestimo(
     usuario_id: Json["id"].tostring(),
     livro: Json["nome"].tostring(),
     data_emprestimo: Json["email"].tostring(),
     data_devolucao: DateTime.parse(Json["data_devolucao"]), devolvido:  Json["devolvido"] == true ? true : false,
   );
+
+  get id => null;
 }
 
