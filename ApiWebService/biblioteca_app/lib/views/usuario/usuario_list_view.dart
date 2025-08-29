@@ -39,7 +39,7 @@ class _UsuarioListViewState extends State<UsuarioListView> {
     final busca = _buscaField.text.toLowerCase();
     setState(() {
       _filtroUsuario = _usuarios.where((user) {
-        user.nome.toLowerCase().contains(busca) || //filtra pelo nome
+       return user.nome.toLowerCase().contains(busca) || //filtra pelo nome
         user.email.toLowerCase().contains(busca); //filtra pelo email
       }).toList(); //converte em lista
     });
