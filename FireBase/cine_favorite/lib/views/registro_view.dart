@@ -10,34 +10,38 @@ class RegistroView extends StatefulWidget {
 
 class _RegistroViewState extends State<RegistroView> {
   //atributos
-  final FirebaseAuth _auth = FirebaseAuth.instance;
   final _emailField = TextEditingController();
   final _senhaField = TextEditingController();
-  final _confirmarSenhaField = TextEditingController();
-  bool _ocultarSenha = true;
-  bool _ocultarConfirmarSenha = true;
+  final _confSenhaField = TextEditingController();
+  final _authController = FirebaseAuth.instance; //controlador do Firebase Auth
+  bool _senhaOculta = true;
+  bool _confSenhaOculta = true;
 
+  //método _registrar
   void _registrar() async{
-    if(_senhaField.text != _confirmarSenhaField.text) return;
+    if(_senhaField.text != _confSenhaField.text) return;//interrompe o método se senhas diferentes
     try {
-      await _auth.createUserWithEmailAndPassword(
+      await _authController.createUserWithEmailAndPassword(
         email: _emailField.text.trim(), 
         password: _senhaField.text);
-      Navigator.pop(context); 
-    } on FirebaseAuthException catch (e) {
+      Navigator.pop(context); //fecha a tela de Registro
+      // é logado automaticamente após o cadastro
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Erro ao Registrar: $e"))
+        SnackBar(content: Text("Falha ao registrar: $e"))
       );
     }
   }
 
+  //build da tela
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Registro')),
+      appBar: AppBar(title: Text("Registro")),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextField(
               controller: _emailField,
@@ -46,22 +50,42 @@ class _RegistroViewState extends State<RegistroView> {
             ),
             TextField(
               controller: _senhaField,
-              decoration: InputDecoration(labelText: "Senha"),
-              obscureText: false,
+              decoration: InputDecoration(
+                labelText: "Senha",
+                suffix: IconButton(
+                  onPressed: () => setState(() {
+                    _senhaOculta =
+                        !_senhaOculta; //inverte o valor da variável booleana
+                  }),
+                  icon: _senhaOculta
+                      ? Icon(Icons.visibility)
+                      : Icon(Icons.visibility_off),
+                ),
+              ),
+              obscureText: _senhaOculta,
             ),
             TextField(
-              controller: _confirmarSenhaField,
-              decoration: InputDecoration(labelText: "Senha"),
-              obscureText: true,
+              controller: _confSenhaField,
+              decoration: InputDecoration(
+                labelText: "Senha",
+                suffix: IconButton(
+                  onPressed: () => setState(() {
+                    _confSenhaOculta =
+                        !_confSenhaOculta; //inverte o valor da variável booleana
+                  }),
+                  icon: _confSenhaOculta
+                      ? Icon(Icons.visibility)
+                      : Icon(Icons.visibility_off),
+                ),
+              ),
+              obscureText: _confSenhaOculta,
             ),
-            SizedBox(height: 20,),
-            _senhaField.text != _confirmarSenhaField.text 
-            ? Text("As senhas devem ser Iguais", 
-              style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0), ), )
-            : ElevatedButton(onPressed: _registrar, child: Text("Registrar")),
-            TextButton(onPressed: () => Navigator.pop, child: Text("Voltar"))
+
+            SizedBox(height: 20),
+            ElevatedButton(onPressed: _registrar, child: Text("Registrar")),
           ],
-        ),),
+        ),
+      ),
     );
   }
 }

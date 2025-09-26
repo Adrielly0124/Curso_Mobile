@@ -5,8 +5,7 @@ class Movie {
   //atributos
   final int id; //Id do Filme no TMDB
   final String title; //Titulo do Filme
-  final String
-  posterPath; //caminho da imagem do Poster (path de armazenamento interno)
+  final String posterPath; //caminho da imagem do Poster (path de armazenamento interno)
   double rating; //nota que o usuário dará ao filme (de 0 a 5)
 
   //construtor
@@ -29,6 +28,7 @@ class Movie {
   }
 
   //fromMap Json=>OBJ
+  //fabricando um OBJ a partir da coleção
   factory Movie.fromMap(Map<String,dynamic> map){
     return Movie(
       id: map["id"], 
