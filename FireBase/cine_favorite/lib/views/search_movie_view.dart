@@ -1,4 +1,4 @@
-// Tela de Procura de Filme na API
+//tela de procura de filmes na API
 
 import 'package:cine_favorite/controllers/movie_firestore_controller.dart';
 import 'package:cine_favorite/services/tmdb_service.dart';
@@ -10,20 +10,20 @@ class SearchMovieView extends StatefulWidget {
   @override
   State<SearchMovieView> createState() => _SearchMovieViewState();
 }
-
 class _SearchMovieViewState extends State<SearchMovieView> {
-  //atributos
-  final _movieFireStoreController = MovieFirestoreController();
-  final _searchField = TextEditingController();
+  //atributos 
+ final _movieFireStoreController = MovieFirestoreController();
+ final _searchField = TextEditingController();
 
-  List<Map<String,dynamic>> _movies = [];
+ List<Map<String,dynamic>> _movies = [];
 
-  bool _isLoading = false;
+bool _isLoading = false;
 
-  void _searchMovies() async{
-    //´pega o texto digitado no textField
-    final query = _searchField.text.trim();
-    if(query.isEmpty) return; //para o método
+void _searchMovies() async{
+  //pega o texto digitado no TextField 
+  final query = _searchField.text.trim();
+  if(query.isEmpty) return;
+
 
     setState(() {
       _isLoading = true;
@@ -37,20 +37,24 @@ class _SearchMovieViewState extends State<SearchMovieView> {
       });
     } catch (e) {
       setState(() {
-        _movies=[];
+        _movies = [];
         _isLoading = false;
       });
-      //mostrar uma mensagem de erro
-
+      //mostar mensagem de erro 
+       ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Falha ao Procurar Filmes $e")));
     }
 
-  }
-
+  } 
+  
+  
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Buscar Filme"),),
-      body: Padding(padding: EdgeInsets.all(16),
+     appBar: AppBar(title: Text("Buscar Filmes"), titleTextStyle: TextStyle(decorationColor: Color.fromARGB(255, 63, 146, 255), fontSize: 25),),
+      body: Padding(padding: EdgeInsetsGeometry.all(16),
       child: Column(
         children: [
           TextField(
@@ -63,35 +67,35 @@ class _SearchMovieViewState extends State<SearchMovieView> {
             ),
           ),
           SizedBox(height: 10,),
-          //operador Ternário
+          //operador ternário
           _isLoading ? CircularProgressIndicator()
-          //outro Operador Ternário
-          : _movies.isEmpty ? Text("Nenhum Filme Encontrado")
-          : Expanded(
-            child: ListView.builder(
+          //outro operador
+          :_movies.isEmpty ? Text("Nenhum Filme Encontrado")
+          : Expanded(child: ListView.builder(
               itemCount: _movies.length,
               itemBuilder: (context, index){
                 final movie = _movies[index];
                 return ListTile(
-                  leading: 
-                  Image.network(
+                  leading:  Image.network(
                     "https://image.tmdb.org/t/p/w500${movie["poster_path"]}",
                     height: 50),
                   title: Text(movie["title"]),
                   subtitle: Text(movie["release_date"]),
-                  trailing: IconButton(
-                    onPressed: () async{
-                      //adicionar o filme aos favoritos
-                      _movieFireStoreController.addFavoriteMovie(movie);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("${movie["title"]} adicionado com sucesso"))
-                      );
-                      Navigator.pop(context); //volto para tela de favoritos
-                    }, icon: Icon(Icons.add)),
+                  trailing: IconButton(onPressed: 
+                  () async{
+                    //adicionar aos favoritos 
+                    _movieFireStoreController.addFavoriteMovie(movie);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("${movie["title"]} adicionado com sucesso")));
+                    Navigator.pop(context);
+                  }, icon: Icon(Icons.add)),
                 );
-              }))
+              },
+          ))
         ],
-      ),),
+      ),
+      ),
     );
   }
 }
+
+ 

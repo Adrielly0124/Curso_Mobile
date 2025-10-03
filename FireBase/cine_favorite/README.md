@@ -103,7 +103,7 @@ Determinar o Caminho Percorrido pelo Ator para executar uma Ação
 - Fluxo da Ação de Login
 
 ```mermaid
-
+graph TD
     A[Início] --> B{Tela de Login}
     B --> C[Inserir Email e Senha]
     C --> D{Validar as Credenciais}
