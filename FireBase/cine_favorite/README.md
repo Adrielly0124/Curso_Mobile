@@ -157,9 +157,7 @@ graph TD
 ```
 
 ## Protopipagem
-
-Link dos Protótipos
+- Figma
+https://www.figma.com/design/ZgoyViZYjdnSsz3fejhvam/Untitled?node-id=2002-3&t=pYNyIPfv9Fu57VCE-0
 
 ## Codificação
-###Figma
-https://www.figma.com/design/ZgoyViZYjdnSsz3fejhvam/Untitled?node-id=2002-3&t=pYNyIPfv9Fu57VCE-0
