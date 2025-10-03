@@ -10,8 +10,52 @@ Construir um Aplicativo do Zero - O CineFavorite que permitirá criar uma conte 
 - Listar filmes por Palavra-Chave
 
 ## Levantamento de Requistos
-- ### Funcionais
-- ### Não Funcionais
+- ### Funcionais - (São as funções principais que o aplicativo precisa ter)
+Usuário:
+- O app deve permitir que o usuário crie uma conta com email e senha.
+- O app deve permitir que o usuário faça login e também logout.
+
+Filmes:
+- O app deve permitir que o usuário pesquise filmes na API TMDB usando palavra-chave.
+- O app deve mostrar os resultados da pesquisa com título e capa (pôster).
+
+Favoritos:
+- O usuário deve poder adicionar filmes da lista aos favoritos.
+- O usuário deve poder remover filmes dos favoritos.
+- O usuário deve poder ver sua lista de filmes favoritos em uma galeria.
+- O usuário deve poder dar uma nota para cada filme favorito.
+- O usuário deve poder editar/atualizar a nota de um filme já adicionado.
+
+Integrações:
+- O app deve se conectar à API TMDB para buscar filmes.
+- O app deve usar o Firebase (Auth e Firestore) para salvar contas e a lista de favoritos.
+
+- ### Não Funcionais - (São características de qualidade do aplicativo)
+
+Usabilidade:
+- O app deve ter uma interface simples, fácil de usar e parecida com o protótipo do Figma.
+- A navegação entre as telas deve ser clara e rápida.
+
+Desempenho:
+- O app deve mostrar os resultados da pesquisa em poucos segundos (até 3s).
+- A lista de favoritos deve abrir sem demora, mesmo com vários filmes.
+
+Segurança:
+- O login deve ser feito pelo Firebase Authentication.
+- Os dados do usuário e dos filmes favoritos devem ficar salvos de forma segura no Firestore.
+- A comunicação com a API e Firebase deve usar HTTPS.
+
+Confiabilidade:
+- O app deve funcionar bem a qualquer hora, exceto quando houver manutenção da API TMDB ou do Firebase.
+- Se der erro na conexão, o app deve mostrar uma mensagem de aviso amigável ao usuário.
+
+Portabilidade:
+- O app deve rodar em Android e iOS usando Flutter.
+- Deve ser compatível com as versões mais novas desses sistemas.
+
+Manutenção:
+- O código deve ser organizado e comentado, de preferência no padrão MVC.
+- O projeto deve ser salvo e atualizado no GitHub, para controle de versão e trabalho em equipe.
 
 ## Recurso do Projeto
 - Linguagem de Programação: Flutter/Dart
@@ -117,4 +161,5 @@ graph TD
 Link dos Protótipos
 
 ## Codificação
-
+###Figma
+https://www.figma.com/design/ZgoyViZYjdnSsz3fejhvam/Untitled?node-id=2002-3&t=pYNyIPfv9Fu57VCE-0
