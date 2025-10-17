@@ -19,6 +19,15 @@ As principais funcionalidades implementadas foram:
 - Interface simples e intuitiva:
     As telas foram organizadas de forma objetiva: Login, Tela Principal e Histórico de Pontos.
     O design prioriza a clareza, com botões grandes e mensagens de feedback para o usuário.
+### Estrutura das telas
+ - Tela de login:
+    - Entrada de e-mail corporativo (@rhconnect.com.br) e senha.
+ - Tela Home:
+    - Botão para registrar ponto.
+    - Histórico de pontos exibido logo após cada marcação.
+ - Tela de Perfil
+    - Exibe informações do usuário logado.
+    - Opção de logout.
 
 ### Decisões de design e estrutura
 Desenvolvi o projeto utilizando uma arquitetura organizada em camadas, com as principais pastas:
