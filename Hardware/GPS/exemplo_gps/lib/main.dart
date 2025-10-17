@@ -41,7 +41,7 @@ class _LocationScreenState extends State<LocationScreen> {
     
     try {
       final cidade = await ClimaService.getCityWeatherByPosition(position);
-      return "${cidade?["name"]} -- ${cidade?["main"]["temp"] - 273}° ";
+      return "${cidade?["nzame"]} -- ${cidade?["main"]["temp"] - 273}° ";
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("$e"))
