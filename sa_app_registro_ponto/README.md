@@ -24,10 +24,10 @@ As principais funcionalidades implementadas foram:
 Desenvolvi o projeto utilizando uma arquitetura organizada em camadas, com as principais pastas:
 
 lib/
-  controllers/  (Lógica e comunicação com Firebase)
-  models/ (Estruturas de dados (usuário e ponto))
-  views/  (Telas do aplicativo (login, home, perfil, histórico))
-  main.dart (Inicialização do app e integração Firebase)
+  controllers/  (Lógica e comunicação com Firebase);
+  models/ (Estruturas de dados (usuário e ponto));
+  views/  (Telas do aplicativo (login, home, perfil, histórico));
+  main.dart (Inicialização do app e integração Firebase).
 
 Essa separação facilita a manutenção e a leitura do código.
 As decisões principais foram:
