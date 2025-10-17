@@ -1,4 +1,4 @@
-# sa_app_registro_ponto
+# SA - APP DE REGISTRO DE PONTO
 ## Relatório de Implementação
 ### Funcionalidades implementadas
 
