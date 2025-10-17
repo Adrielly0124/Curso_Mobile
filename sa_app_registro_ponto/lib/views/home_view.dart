@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../controllers/auth_controller.dart';
 import '../controllers/ponto_controller.dart';
 import 'perfil_view.dart';
+import 'historico_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -32,21 +33,25 @@ class _HomeViewState extends State<HomeView> {
   }
 
   Future<void> registrarPonto() async {
-    try {
-      final user = await auth.userChanges.first;
-      if (user == null) return;
+  try {
+    final user = await auth.userChanges.first;
+    if (user == null) return;
 
-      await pontoController.registrarPonto(user.uid);
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Ponto registrado com sucesso!')));
+    await pontoController.registrarPonto(user.uid);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Ponto registrado com sucesso!'))
+    );
 
-      // Atualiza o histórico após registrar
-      await carregarHistorico();
-    } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
-    }
+    // Redireciona para a tela de histórico
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const HistoricoView()),
+    );
+  } catch (e) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(e.toString())));
   }
+}
 
   @override
   Widget build(BuildContext context) {
