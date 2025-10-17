@@ -10,15 +10,12 @@ As principais funcionalidades implementadas foram:
 - Autenticação de usuários:
     O login é feito com NIF e senha, sendo permitido apenas o acesso de usuários com o domínio corporativo @rhconnect.com.br.
     Essa autenticação é feita através do Firebase Authentication, que garante a segurança das credenciais e a persistência do login.
-
 - Registro de ponto com geolocalização:
     Ao clicar em “Registrar Ponto”, o aplicativo captura automaticamente a data, hora, latitude e longitude do dispositivo.
     Em seguida, verifica se o usuário está dentro do raio de 100 metros do local de trabalho, utilizando o pacote geolocator.
     Caso a localização esteja válida, o registro é salvo no Firestore com os dados correspondentes.
-
 - Histórico de pontos:
     Após cada registro, o usuário é redirecionado para a tela de Histórico, onde pode visualizar todos os pontos batidos anteriormente, com suas respectivas datas, horários e localizações.
-
 - Interface simples e intuitiva:
     As telas foram organizadas de forma objetiva: Login, Tela Principal e Histórico de Pontos.
     O design prioriza a clareza, com botões grandes e mensagens de feedback para o usuário.
